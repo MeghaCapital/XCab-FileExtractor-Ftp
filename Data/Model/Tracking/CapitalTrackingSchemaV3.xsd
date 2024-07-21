@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TrackingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Ref1" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Ref2" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <xs:element name="SenderDetails"
+                    type="AddressDetailsType"
+                    minOccurs="0" maxOccurs="1" />
+        <xs:element name="ReceiverDetails"
+                    type="AddressDetailsType"
+                    minOccurs="0" maxOccurs="1" />
+        <xs:element name="ConsignmentNumber" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <xs:element name="JobNumber" type="xs:positiveInteger" maxOccurs="1" />
+        <xs:element name="JobDate" type="xs:date" maxOccurs="1" />
+        <xs:element name="TrackingType" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Booked" />
+              <xs:enumeration value="ReBooked" />
+              <xs:enumeration value="JobModified" />
+              <xs:enumeration value="PickupArrive" />
+              <xs:enumeration value="PickupComplete" />
+              <xs:enumeration value="DeliveryArrive" />
+              <xs:enumeration value="DeliveryComplete" />
+              <xs:enumeration value="Cancelled" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="EventCoordinates"
+                    minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Coordinates are only supplied where available</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Latitude" minOccurs="0" maxOccurs="1"></xs:element>
+              <xs:element name="Longitude" minOccurs="0" maxOccurs="1"></xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EventDateTime" type="xs:dateTime" />
+        <xs:element name="EventLocation" type="xs:string" minOccurs="0" maxOccurs="1" >
+          <xs:annotation>
+            <xs:documentation>Reverese Geocoded Address for the event e.g. 153 Wellington Rd, Clayton VIC 3168, Australia</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Eta" type="xs:string" minOccurs="0" maxOccurs="1" >
+          <xs:annotation>
+            <xs:documentation>Eta for the Job. Etas for Permanent job are for the same day the job was allocated to the driver. </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ItemsScanned"
+                    minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Items scanned will only be present where items have been scanned on the job</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item"
+                          minOccurs="1"
+                          maxOccurs="unbounded"
+                          type="itemType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ItemsNotScanned"
+                    minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Items not scanned will only be present where items have been scanned on the job and items have also not been present for a reason</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item"
+                          minOccurs="1"
+                          maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AccountCode" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Your account code will be provided to you by your Capital Transport representative</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="8" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CapitalState"
+                    type="CapBusiness"
+                    minOccurs="1" maxOccurs="1" />
+        <xs:element name="JobModification"
+                    type="JobModificationType"
+                    minOccurs="0" maxOccurs="1" />
+        <xs:element name="PODUrl" type="PodInformationType" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="itemType">
+    <xs:annotation>
+      <xs:documentation>Use the itmType element to specify your SKU or description for the item being sent</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="itmDescription"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="itmLength"
+                  type="xs:decimal"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="itmWidth"
+                  type="xs:decimal"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="itmHeight"
+                  type="xs:decimal"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="itmWeight"
+                  type="xs:decimal"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="itmCubic"
+                  type="xs:decimal"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="itmBarcode"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="itmScanReason"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JobModificationType">
+    <xs:annotation>
+      <xs:documentation>This type is used by Capital to notify client applications when a job is modified</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OriginalJobNumber"
+                  type="xs:string"
+                  minOccurs="1" maxOccurs="1" />
+      <xs:element name="ModifiedJobNumber"
+                  type="xs:string"
+                  minOccurs="1" maxOccurs="1" />
+      <xs:element name="ModificationNotes"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PodInformationType">
+    <xs:annotation>
+      <xs:documentation>This type is used by Capital to notify client applications the location of POD from POD Streamer</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PodJobNumber"
+                  type="xs:string"
+                  minOccurs="1" maxOccurs="1" />
+      <xs:element name="PodSubJobNumber"
+                  type="xs:string"
+                  minOccurs="1" maxOccurs="1" />
+      <xs:element name="SignatoriesName"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="Base64Image"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddressDetailsType">
+    <xs:annotation>
+      <xs:documentation>This type is used by Capital to notify client applications the address details</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AddressLine1"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="AddressLine2"
+                  type="xs:string"
+                  minOccurs="0" maxOccurs="1" />
+      <xs:element name="Suburb"
+                  type="xs:string"
+                  minOccurs="1" maxOccurs="1" />
+      <xs:element name="Postcode"
+                  type="xs:integer" 
+                  minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CapBusiness">
+    <xs:annotation>
+      <xs:documentation>This type limits the Capital state offices that are available</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VIC" />
+      <xs:enumeration value="WA" />
+      <xs:enumeration value="SA" />
+      <xs:enumeration value="NSW" />
+      <xs:enumeration value="QLD" />
+      <xs:enumeration value="ACT" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

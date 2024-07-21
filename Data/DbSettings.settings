@@ -1,0 +1,159 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Data" GeneratedClassName="DbSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ApplicationSqlDatabaseConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=ApplicationSql.challengelogistics.com.au;Initial Catalog=xcab;Persist Security Info=true;User ID=ccr_user; Password = ccr1234;TrustServerCertificate=True;</Value>
+    </Setting>
+    <Setting Name="ILogixMysqlConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=ilogixdbserver;Pooling=true;Uid=iLogixDev;Pwd=ilogix256;Database=ilogixdb;Connection Timeout=15;charset=utf8;</Value>
+    </Setting>
+    <Setting Name="EmailRecipientList" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Software-Development@capitaltransport.com.au</Value>
+    </Setting>
+    <Setting Name="SendTrackEventNotification" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LocalDownloadFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\temp\xCab</Value>
+    </Setting>
+    <Setting Name="FolderNameBookings" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bookings</Value>
+    </Setting>
+    <Setting Name="FolderNameTracking" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Tracking</Value>
+    </Setting>
+    <Setting Name="ProcessedFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Processed</Value>
+    </Setting>
+    <Setting Name="ErrorFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Error_Files</Value>
+    </Setting>
+    <Setting Name="TyphonFtpConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ftp://192.168.160.15</Value>
+    </Setting>
+    <Setting Name="BookingFileExtension" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xml</Value>
+    </Setting>
+    <Setting Name="EdiFactExtension" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">edi</Value>
+    </Setting>
+    <Setting Name="SecondaryDbConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=ReportSql.challengelogistics.com.au;Initial Catalog=Tplus;Persist Security Info=true;User ID=xcab_user; Password = xcab1234;TrustServerCertificate=True;</Value>
+    </Setting>
+    <Setting Name="TplusMELDatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = tplusmeldb)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = TPLUS)
+    )
+  );
+User Id=tplus_user;password=iam34;</Value>
+    </Setting>
+    <Setting Name="TplusBNEDatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = tplusbnedb)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = TPLUS)
+    )
+  );
+User Id=tplus_user;password=iam34;</Value>
+    </Setting>
+    <Setting Name="TplusPERDatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source = 
+ (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = tplusperdb)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = TPLUS)
+    )
+  );
+User Id=tplus_user;password=iam34;</Value>
+    </Setting>
+    <Setting Name="TplusADLDatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = tplusadldb)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = TPLUS)
+    )
+  );
+User Id=tplus_user;password=iam34;</Value>
+    </Setting>
+    <Setting Name="TplusSYDDatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = tplussyddb)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = TPLUS)
+    )
+  );
+User Id=tplus_user;password=iam34;</Value>
+    </Setting>
+    <Setting Name="ILogixArchivedDbConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=p1-ntx-ixarch01.challengelogistics.com.au;Pooling=true;Uid=iLogixDev;Pwd=ilogix256;Database=ilogixdb;Connection Timeout=30;</Value>
+    </Setting>
+    <Setting Name="XCabDevDatabase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=devsql.challengelogistics.com.au;Initial Catalog=xcab;Persist Security Info=true;User ID=xcab_user; Password = xcab1234;TrustServerCertificate=True;</Value>
+    </Setting>
+    <Setting Name="LocalPODFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">POD</Value>
+    </Setting>
+    <Setting Name="UseComo" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ILogixWebProAppConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=ilogixdbserver.challengelogistics.com.au;Pooling=true;Uid=iLogixWebProApp;Pwd=ilogix256;Database=ilogixdb;Connection Timeout=30;</Value>
+    </Setting>
+    <Setting Name="ReportSqlDatabaseConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=ReportSql.challengelogistics.com.au;Initial Catalog=TPlus;Persist Security Info=true;User ID=xcab_user; Password = xcab1234;TrustServerCertificate=True;</Value>
+    </Setting>
+    <Setting Name="NfsUrlString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\challengelogistics.com.au\national\FTP\Home\</Value>
+    </Setting>
+    <Setting Name="VicSoapPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">vicopensys3168</Value>
+    </Setting>
+    <Setting Name="NswSoapPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">nswopensys2116</Value>
+    </Setting>
+    <Setting Name="QldSoapPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">qldopensys4011</Value>
+    </Setting>
+    <Setting Name="SaSoapPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">saopensys5033</Value>
+    </Setting>
+    <Setting Name="WaSoapPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">waopensys6057</Value>
+    </Setting>
+    <Setting Name="SoapPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">opensys1</Value>
+    </Setting>
+    <Setting Name="VicWebServiceEndpoints" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://edi.capitaltransport.com.au/soap-services/soap-booker.cgi</Value>
+    </Setting>
+    <Setting Name="NswWebServiceEndpoints" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://capsyd-bookings.internetcouriers.com.au/soap-services/soap-booker.cgi</Value>
+    </Setting>
+    <Setting Name="QldWebServiceEndpoints" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://bne-bookings.internetcouriers.com.au/soap-services/soap-booker.cgi</Value>
+    </Setting>
+    <Setting Name="SaWebServiceEndpoints" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://adl-bookings.internetcouriers.com.au/soap-services/soap-booker.cgi</Value>
+    </Setting>
+    <Setting Name="WaWebServiceEndpoints" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://wa-bookings.internetcouriers.com.au/soap-services/soap-booker.cgi</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

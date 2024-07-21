@@ -1,0 +1,5 @@
+C:\Repository\XCab-FileExtractor-Ftp\XCabBookingFileExtractor\obj\Debug\net6.0\XCabBookingFileExtractor.csproj.AssemblyReference.cache
+C:\Repository\XCab-FileExtractor-Ftp\XCabBookingFileExtractor\obj\Debug\net6.0\XCabBookingFileExtractor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repository\XCab-FileExtractor-Ftp\XCabBookingFileExtractor\obj\Debug\net6.0\XCabBookingFileExtractor.AssemblyInfoInputs.cache
+C:\Repository\XCab-FileExtractor-Ftp\XCabBookingFileExtractor\obj\Debug\net6.0\XCabBookingFileExtractor.AssemblyInfo.cs
+C:\Repository\XCab-FileExtractor-Ftp\XCabBookingFileExtractor\obj\Debug\net6.0\XCabBookingFileExtractor.csproj.CoreCompileInputs.cache

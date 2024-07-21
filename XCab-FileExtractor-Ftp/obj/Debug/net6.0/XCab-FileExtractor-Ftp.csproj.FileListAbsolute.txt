@@ -1,0 +1,15 @@
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\bin\Debug\net6.0\XCab-FileExtractor-Ftp.exe
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\bin\Debug\net6.0\XCab-FileExtractor-Ftp.deps.json
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\bin\Debug\net6.0\XCab-FileExtractor-Ftp.runtimeconfig.json
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\bin\Debug\net6.0\XCab-FileExtractor-Ftp.dll
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\bin\Debug\net6.0\XCab-FileExtractor-Ftp.pdb
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.csproj.AssemblyReference.cache
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.AssemblyInfoInputs.cache
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.AssemblyInfo.cs
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.csproj.CoreCompileInputs.cache
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.dll
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\refint\XCab-FileExtractor-Ftp.dll
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.pdb
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\XCab-FileExtractor-Ftp.genruntimeconfig.cache
+C:\Repository\XCab-FileExtractor-Ftp\XCab-FileExtractor-Ftp\obj\Debug\net6.0\ref\XCab-FileExtractor-Ftp.dll
