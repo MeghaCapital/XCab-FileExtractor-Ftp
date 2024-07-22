@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Message">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MessageHeader">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SenderID" type="xs:string" />
+              <xs:element name="RecipientID" type="xs:string" />
+              <xs:element name="Prepared" type="xs:date" />
+              <xs:element name="MessageID" type="xs:string" />
+              <xs:element name="MessageType" type="xs:string" />
+              <xs:element name="MessageVersion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MessageBody">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ManifestHeader">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Party">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Address1" type="xs:string" />
+                          <xs:element name="Suburb" type="xs:string" />
+                          <xs:element name="City" type="xs:string" />
+                          <xs:element name="PostCode" type="xs:int" />
+                          <xs:element name="State" type="xs:string" />
+                          <xs:element name="Phone" />
+                        </xs:sequence>
+                        <xs:attribute name="Role" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Consignments">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Consignment">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ConsignmentNo" type="xs:string" />
+                          <xs:element name="ConsignmentDate" type="xs:dateTime" />
+                          <xs:element maxOccurs="unbounded" name="Party">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="Code" type="xs:string" />
+                                <xs:element minOccurs="0" name="Name" type="xs:string" />
+                                <xs:element minOccurs="0" name="Address1" type="xs:string" />
+                                <xs:element minOccurs="0" name="Suburb" type="xs:string" />
+                                <xs:element minOccurs="0" name="City" type="xs:string" />
+                                <xs:element minOccurs="0" name="PostCode" type="xs:string" />
+                                <xs:element minOccurs="0" name="State" type="xs:string" />
+                                <xs:element minOccurs="0" name="Phone" />
+                              </xs:sequence>
+                              <xs:attribute name="Role" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Reference1" type="xs:string" />
+                          <xs:element name="Reference2" type="xs:string" />
+                          <xs:element name="ServiceRequired" type="xs:string" />
+                          <xs:element name="Contact" />
+                          <xs:element maxOccurs="unbounded" name="Total">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:decimal">
+                                  <xs:attribute name="Units" type="xs:string" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Line">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Items" type="xs:int" />
+                                <xs:element name="PackageType" type="xs:string" />
+                                <xs:element name="Description" type="xs:string" />
+                                <xs:element maxOccurs="unbounded" name="Measurement">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Value" type="xs:decimal" />
+                                      <xs:element name="Unit" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute name="Property" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Dimensions">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Quantity" type="xs:int" />
+                                      <xs:element name="Length" type="xs:decimal" />
+                                      <xs:element name="Width" type="xs:decimal" />
+                                      <xs:element name="Height" type="xs:decimal" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Hire" />
+                          <xs:element name="References">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Reference">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="Type" type="xs:string" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ControlTotal">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Total">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:int">
+                            <xs:attribute name="Units" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
