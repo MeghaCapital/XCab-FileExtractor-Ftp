@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\Ftp\Ftp.csproj" />
+    <ProjectReference Include="..\XCabService\XCabService.csproj" />
+  </ItemGroup>
+
 </Project>

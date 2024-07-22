@@ -7,7 +7,7 @@ namespace Data.Repository.V2
 {
 	public class XCabUpdatesRepository
 	{
-		private const string daysFrom = "-12";
+		private const string daysFrom = "-7";
 		public async Task<ICollection<CcrXCabTrackingJob>> GetXCabBookingUpdates(int xCabBookingIdToTest = 0)
 		{
 			var xCabBookingUpdates = new List<CcrXCabTrackingJob>();
@@ -215,12 +215,11 @@ namespace Data.Repository.V2
 										TrackingFolderName, PodName, Remoteftphostname, RemoteFtpUserName,RemoteFtpPassword, Remotetrackingfoldername
 									FROM @XcabUpdates";
 #if DEBUG
-					//sql += " WHERE BookingId = " + xCabBookingIdToTest;
-					sql += " WHERE BookingId in (8710627,8710772,8710644,8743305,8710690,8710700,8710708,8710725,8710732,8710741,8710749,8710753,8710768,8710784,8710818,8710798,8710800,8710811,8710827,8710855,8710864,8710873,8710913,8710922,8718122,8725210,8710692,8755466,8773858,8710646,8710648,8710657,8710660,8710661,8710681,8710702,8710715,8710728,8710730,8710731,8710787,8710775,8710780,8710785,8710791,8710810,8710816,8710826,8710830,8710837,8710848,8710865,8711051,8710624,8720603)";
+					sql += " WHERE BookingId = " + xCabBookingIdToTest;
 
 #endif
 
-                    xCabBookingUpdates = (List<CcrXCabTrackingJob>)await connection.QueryAsync<CcrXCabTrackingJob>(sql, commandTimeout: 180);
+                    xCabBookingUpdates = (List<CcrXCabTrackingJob>)await connection.QueryAsync<CcrXCabTrackingJob>(sql);
 				}
 			}
 			catch (Exception e)

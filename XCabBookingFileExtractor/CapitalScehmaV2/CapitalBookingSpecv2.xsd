@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
+
+    <xs:element name="Requests">
+    <xs:complexType>
+    <xs:sequence>
+      <xs:annotation>
+          <xs:documentation>This node will encapsulate multiple requests</xs:documentation>
+      </xs:annotation>
+      <xs:element name="Request"
+                  type="Request"
+                  minOccurs="1"
+                  maxOccurs="unbounded" />
+    </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+   
+    <xs:complexType name="itemType">
+        <xs:annotation>
+            <xs:documentation>Use the itmType element to specify your SKU or description for the item being sent</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="itmDescription"
+                        type="xs:string"
+                        minOccurs="0" />
+            <xs:element name="itmLength"
+                        type="xs:decimal"
+                        minOccurs="0" />
+            <xs:element name="itmWidth"
+                        type="xs:decimal"
+                        minOccurs="0" />
+            <xs:element name="itmHeight"
+                        type="xs:decimal"
+                        minOccurs="0" />
+            <xs:element name="itmWeight"
+                        type="xs:decimal"
+                        minOccurs="0" />
+            <xs:element name="itmCubic"
+                        type="xs:decimal"
+                        minOccurs="0" />
+            <xs:element name="itmBarcode"
+                        type="xs:string"
+                        minOccurs="1" />
+
+        </xs:sequence>
+              
+    </xs:complexType>
+    
+    <xs:complexType name="LocationType" >
+        <xs:annotation>
+            <xs:documentation>This type definition is for use when specifying from and to locations</xs:documentation>
+            <xs:documentation>All suburb and postcode combinations and suburb spelling must match the Australia Post suburb list</xs:documentation>
+            <xs:documentation>Use the locDetail fields in an overflow manner from 1 to 5 to specify as much detail about the address as possible.LocDetail1 is a required field and the remaning are optional</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="locSuburb"
+                        type="xs:string"
+                        minOccurs="1" />
+            <xs:element name="locPostcode"
+                        type="pcodeField" />
+            <xs:element name="locDetail1"
+                        type="addressField"
+                        minOccurs="1" />
+            <xs:element name="locDetail2"
+                        type="addressField"
+                        minOccurs="0" />
+            <xs:element name="locDetail3"
+                        type="addressField"
+                        minOccurs="0" />
+            <xs:element name="locDetail4"
+                        type="addressField"
+                        minOccurs="0" />
+            <xs:element name="locDetail5"
+                        type="addressField"
+                        minOccurs="0" />
+            <xs:element name="locNotes"
+                        type="noteField"
+                        minOccurs="0"/>
+            <xs:element name="SpecialInstructions"
+                        type="specialInstructionsField"
+                        minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+        
+    <xs:simpleType name="addressField">
+        <xs:annotation>
+            <xs:documentation>This type limits the length of location detail fields</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="noteField">
+        <xs:annotation>
+            <xs:documentation>This type limits the length of location note fields</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="120" />
+        </xs:restriction>
+    </xs:simpleType>
+
+  <xs:simpleType name="specialInstructionsField">
+    <xs:annotation>
+      <xs:documentation>This type limits the length of special instructions fields</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="150" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+    <xs:simpleType name="pcodeField">
+        <xs:annotation>
+            <xs:documentation>This type limits the length of postcode fields and restricts it to a positive integer</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="4" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="CapBusiness">
+        <xs:annotation>
+            <xs:documentation>This type limits the Capital state offices that are available</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="VIC" />
+            <xs:enumeration value="WA" />
+            <xs:enumeration value="SA" />
+            <xs:enumeration value="NSW" />
+            <xs:enumeration value="QLD" />
+           <xs:enumeration value="ACT" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="PhoneNumberType">
+        <xs:annotation>
+            <xs:documentation>Each phone number provided must be broken into a 2 (two) digit area code along with an 8 (eight) digit phone number with an optional description</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AreaCode">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9]{2}" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="PhoneNumber">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9]{8}" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Description" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Request">
+    <xs:sequence>
+      <xs:element name="BookingType">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="BOOKING" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="FromDetail"
+                  type="LocationType" />
+      <xs:element name="ToLegs">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Leg"
+                        minOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Ref1"
+                              minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Provide any unique reference used for reconciliation</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Ref2"
+                              minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Provide the agreed consignment number format (e.g. CL00000001)</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Ref3"
+                              minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Provide an additional reference only applicable to specific clients</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="ToDetail"
+                              type="LocationType" />
+                  <xs:element name="TrackAndTraceSmsNumber" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Provide valid 10 digit mobile number to receive notifications eg- 04xxxxxxxx</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="TrackAndTraceEmailAddress"
+                              minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Provide valid email address to receive notification. eg- abc@gmail.com</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="ATL" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Authority to leave items</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="5" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Items">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:annotation>
+                          <xs:documentation>Items are not compulsory, but are recommended for clarity and accuracy.</xs:documentation>
+                        </xs:annotation>
+                        <xs:element name="Item"
+                                    type="itemType"
+                                    minOccurs="0"
+                                    maxOccurs="unbounded" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="PhoneNumbers" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="PhoneNumber" minOccurs="1" maxOccurs="unbounded" type="PhoneNumberType" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Earliest" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Earliest Date Time will indicate the earliest time when the job can be picked. The field follows ISO 8601 standard, we typically use: yyyy-MM-ddHH:mm </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:dateTime">
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Latest" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Latest Date Time will indicate the latest time when the job can be picked. The field follows ISO 8601 standard, we typically use: yyyy-MM-ddHH:mm </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:dateTime">
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Planned" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Planned Date Time will indicate the planned time when the job is preferred to be picked up. The field follows ISO 8601 standard, we typically use: yyyy-MM-ddHH:mm </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:dateTime">
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AccountCode">
+        <xs:annotation>
+          <xs:documentation>Your account code will be provided to you by your Capital Transport representative</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="8" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ServiceCode">
+        <xs:annotation>
+          <xs:documentation>Service Code under which the jobs will be booked</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="8" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="Earliest" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>These fields allow Capital to receive pre bookings that are despatched to be picked up at a planned time in the future. Please liaise with Capital to agree on what field out of Earliest, Planned and Latest will be used for the purpose of integration for pre booked jobs.Earliest Date Time will indicate the earliest time when the job can be picked. The field follows ISO 8601 standard, we typically use: yyyy-MM-ddHH:mm </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime">
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+   
+      <xs:element name="Latest" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>These fields allow Capital to receive pre bookings that are despatched to be picked up at a planned time in the future. Please liaise with Capital to agree on what field out of Earliest, Planned and Latest will be used for the purpose of integration for pre booked jobs.Latest Date Time will indicate the latest time when the job can be picked. The field follows ISO 8601 standard, we typically use: yyyy-MM-ddHH:mm</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime">
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      
+      <xs:element name="Planned" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>These fields allow Capital to receive pre bookings that are despatched to be picked up at a planned time in the future. Please liaise with Capital to agree on what field out of Earliest, Planned and Latest will be used for the purpose of integration for pre booked jobs.Planned Date Time will indicate the planned time when the job is preferred to be picked up. The field follows ISO 8601 standard, we typically use: yyyy-MM-ddHH:mm </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime">
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>     
+
+      <xs:element name="Caller" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>This is the caller field that is attached to the Booking, we could use it add Run code name</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="DriverNumber" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>This is the 4 digit Driver Number field that will be used to assign the booking to the provided driver</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="RunCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>This represents the Run Code, mostly used for permanent runs</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CapitalState"
+                    type="CapBusiness"
+                    minOccurs="1" />
+
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
